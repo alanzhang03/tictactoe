@@ -1,8 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 
 
-
+body{
+    background-color: #f1faee;
+    background: linear-gradient(45deg, #e0eafc, #cfdef3);
+}
 
 #game-header{
     text-align: center;
+
+}
+
+.player-vs-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+#player-vs-ai-box, #player-vs-player-box{
+    
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 25vh;
+    height: 18vh;
+    width: 12vw;
+    border: black solid 3px;
+    border-radius: 20px;
+    transition-duration: 0.3s;
+    transition-property: transform;
+
+}
+
+#player-vs-ai-header, #player-vs-player-header{
+    text-align: center;
+    padding-top: 2vh;
+    font-size: 3vh;
+    font-weight: bold;
+
+
+}
+
+#player-vs-ai-box:hover, #player-vs-player-box:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.select-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }

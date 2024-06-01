@@ -22,3 +22,9 @@ console.log(player("Alan Zhang"));
 // console.log(gameBoard.grid);
 // gameBoard.grid[0][1] = 10;
 // console.log(gameBoard.grid);
+
+function startGame(){
+    //todo
+}
+
+startGame();
