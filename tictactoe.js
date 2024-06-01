@@ -1,23 +1,16 @@
 
+let gameBoardGrid = [
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+];
 
-
-
-function startGame(){
-    
-}
-
-let player = {
-    
-//testing
-
+let gameBoard = {
+    grid: gameBoardGrid,
+    gameStart: false,
+    gameEnd: false
 };
 
-function gameState(){
-    let isGameOver = false;
-
-
-}
-
-let player1 = new player("Alan", "O");
-let player2 = new player("Bob", "X");
-
+// console.log(gameBoard.grid);
+// gameBoard.grid[0][1] = 10;
+// console.log(gameBoard.grid);
