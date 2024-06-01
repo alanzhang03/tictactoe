@@ -28,16 +28,25 @@ function startGameAi(){
 
 
 
-let selectButtonAi = document.querySelector(".select-button-ai");
-let selectButtonPlayer = document.querySelector(".select-button-player");
+const selectButtonAi = document.querySelector(".select-button-ai");
+const selectButtonPlayer = document.querySelector(".select-button-player");
+const playerModal = document.querySelector(".player-prompt-modal");
+const aiModal = document.querySelector(".ai-prompt-modal");
+const closeModal = document.querySelector(".close-prompt");
 
 selectButtonAi.addEventListener("click", aiPrompt);
 selectButtonPlayer.addEventListener("click", playerPrompt);
+closeModal.addEventListener("click", closePrompt);
 
 function aiPrompt(){
-    //todo
+    aiModal.showModal();
 }
 
 function playerPrompt(){
-    //todo
+    playerModal.showModal();
+}
+
+function closePrompt(){
+    aiModal.close();
+    playerModal.close();
 }

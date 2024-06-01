@@ -11,7 +11,10 @@
    <h1 id="game-header">Alan's tic tac toe game!</h1>
 
 
+
     <div class="player-vs-container">
+
+
         <div id="player-vs-player-box">
             <div id="player-vs-player-header">
                 Player vs Player
@@ -26,6 +29,8 @@
             </div>               
 
         </div>
+
+
         <div id="player-vs-ai-box">
             <div id="player-vs-ai-header">
                 Player vs AI
@@ -39,15 +44,32 @@
                     Select
                 </button>
             </div>  
+
         </div>
     </div>
-
     <div id="select-button-prompt">
-        
 
+        <dialog class="player-prompt-modal">
+            <form id="player-prompt">
+                <label for="pName">Player 1 Name:</label><br>
+                <input type="text" id="pName" name="pName"><br>
 
+                <label for="p2Name">Player 2 Name:</label><br>
+                <input type="text" id="p2Name" name="p2Name"><br>   
+                <button class="close-prompt">close out!</button>    
+            </form>
+        </dialog>
 
+        <dialog class="ai-prompt-modal">
+            <form id="ai-prompt">
+                <label for="pName">Player 1 Name:</label><br>
+                <input type="text" id="pName" name="pName"><br>
 
+                <label for="aiName">AI Name:</label><br>
+                <input type="text" id="aiName" name="aiName"><br>
+                <button class="close-prompt">close out!</button>
+            </form>
+        </dialog>
 
     </div>
 
