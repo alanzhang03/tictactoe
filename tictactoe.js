@@ -11,6 +11,14 @@ let gameBoard = {
     gameEnd: false
 };
 
+function player(user){
+    const playerName = user;
+    return {playerName};
+}
+
+
+console.log(player("Alan Zhang"));
+
 // console.log(gameBoard.grid);
 // gameBoard.grid[0][1] = 10;
 // console.log(gameBoard.grid);
