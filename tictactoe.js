@@ -17,14 +17,27 @@ function player(user){
 }
 
 
-console.log(player("Alan Zhang"));
 
-// console.log(gameBoard.grid);
-// gameBoard.grid[0][1] = 10;
-// console.log(gameBoard.grid);
-
-function startGame(){
+function startGamePlayer(){
     //todo
 }
 
-startGame();
+function startGameAi(){
+    //todo
+}
+
+
+
+let selectButtonAi = document.querySelector(".select-button-ai");
+let selectButtonPlayer = document.querySelector(".select-button-player");
+
+selectButtonAi.addEventListener("click", aiPrompt);
+selectButtonPlayer.addEventListener("click", playerPrompt);
+
+function aiPrompt(){
+    //todo
+}
+
+function playerPrompt(){
+    //todo
+}

@@ -29,8 +29,8 @@ body{
     width: 12vw;
     border: black solid 3px;
     border-radius: 20px;
-    transition-duration: 0.3s;
-    transition-property: transform;
+    transition-duration: 0.2s;
+ 
 
 }
 
@@ -44,13 +44,21 @@ body{
 }
 
 #player-vs-ai-box:hover, #player-vs-player-box:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     cursor: pointer;
 }
 
-.select-button{
+.select-button-container{
     display: flex;
     justify-content: center;
     align-items: center;
 
+
+}
+
+.select-button-ai,.select-button-player{
+    margin-top: 2vh;
+    width: 8vw;
+    height: 3vh;
+    border-radius: 10px;
 }
