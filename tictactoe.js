@@ -59,6 +59,7 @@ function startGame(){
     console.log(p1NameAi);
     console.log(aiName);
 
+    closePrompt();
 }
 
 

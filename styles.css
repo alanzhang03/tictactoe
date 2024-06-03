@@ -80,7 +80,7 @@ label{
 
 
 
-#pName, #p2Name, #aiName{
+#p1Name, #p2Name, #aiName, #p1NameAi{
     border-radius: 5px;
     font-size: 2vh;
     border: black solid 3px;
