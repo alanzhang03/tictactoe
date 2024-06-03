@@ -41,12 +41,25 @@ function closePrompt(){
     playerModal.close();
 }
 
+let p1Name;
+let p2Name;
+let p1NameAi;
+let aiName;
 const startBtn = document.querySelector(".start-button");
-startBtn.addEventListener("click", )
+startBtn.addEventListener("click", startGame);
+// startBtn.addEventListener("click", closePrompt);
+
+function startGame(){
+    p1Name = document.querySelector("#p1Name").value;
+    p2Name = document.querySelector("#p2Name").value;
+    p1NameAi = document.querySelector("#p1NameAi").value;
+    aiName = document.querySelector("#aiName").value;
+    console.log(p1Name);
+    console.log(p2Name);
+    console.log(p1NameAi);
+    console.log(aiName);
+
+}
 
 
-const p1Name = document.querySelector("#pName").value;
-const p2Name = document.querySelector("#p2Name").value;
 
-console.log(p1Name);
-console.log(p2Name);
