@@ -18,16 +18,6 @@ function player(user){
 
 
 
-function startGamePlayer(){
-    //todo
-}
-
-function startGameAi(){
-    //todo
-}
-
-
-
 const selectButtonAi = document.querySelector(".select-button-ai");
 const selectButtonPlayer = document.querySelector(".select-button-player");
 const playerModal = document.querySelector(".player-prompt-modal");
@@ -50,3 +40,13 @@ function closePrompt(){
     aiModal.close();
     playerModal.close();
 }
+
+const startBtn = document.querySelector(".start-button");
+startBtn.addEventListener("click", )
+
+
+const p1Name = document.querySelector("#pName").value;
+const p2Name = document.querySelector("#p2Name").value;
+
+console.log(p1Name);
+console.log(p2Name);
