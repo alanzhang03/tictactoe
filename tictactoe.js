@@ -29,6 +29,7 @@ let p2Name;
 let p1NameAi;
 let aiName;
 let turnIndicator;
+let marker;
 
 const startBtn = document.querySelectorAll(".start-button");
 const closeModal = document.querySelectorAll(".close-prompt");
@@ -65,6 +66,7 @@ function clearScreen() {
     document.querySelector(".player-vs-container").style.display = "none";
     document.querySelector("#select-button-prompt").style.display = "none";
     newDisplayScreen();
+    displayMarker();
 }
 
 function newDisplayScreen() {
@@ -88,5 +90,20 @@ function startGame(){
 
 }
 
+
+function displayMarker(){
+    if(turnIndicator = p1Name || p1NameAi){
+        marker = "X";
+    }
+    else if(turnIndicator = p2Name || aiName){
+        marker = "O";
+    }
+    let squaresInGrid = document.querySelectorAll("square");
+    for(let i = 0; i < squaresInGrid.length; i++){
+        squaresInGrid.addEventListener("click", function(){
+            squaresInGrid.textContent = marker;
+        })
+    }
+}
 
 
