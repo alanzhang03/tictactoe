@@ -29,7 +29,7 @@ let p2Name;
 let p1NameAi;
 let aiName;
 let turnIndicator;
-let marker;
+
 
 const startBtn = document.querySelectorAll(".start-button");
 const closeModal = document.querySelectorAll(".close-prompt");
@@ -87,21 +87,25 @@ function startGame(){
     console.log(aiName);
     closePrompt();
     clearScreen();
+    
 
 }
 
 
 function displayMarker(){
+    let marker;
+    turnIndicator = p1Name;
     if(turnIndicator = p1Name || p1NameAi){
-        marker = "X";
-    }
-    else if(turnIndicator = p2Name || aiName){
         marker = "O";
     }
-    let squaresInGrid = document.querySelectorAll("square");
+    else if(turnIndicator = p2Name || aiName){
+        marker = "X";
+    }
+    let squaresInGrid = document.querySelectorAll(".square");
     for(let i = 0; i < squaresInGrid.length; i++){
-        squaresInGrid.addEventListener("click", function(){
+        squaresInGrid[i].addEventListener("click", ()=>{
             squaresInGrid.textContent = marker;
+            console.log("testing");
         })
     }
 }
