@@ -106,7 +106,19 @@ label{
 }
 
 .grid-container{
-    display: flex;
+    display: grid;
+    grid-template-columns:  repeat(3, 20vh);
     justify-content: center;
-    align-items: center;
+    
+    
+}
+
+.square{
+    border: black 2px solid;
+    height: 8vw;
+
+}
+
+.square:hover{
+    background-color: #cbd8ec;
 }
