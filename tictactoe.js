@@ -95,17 +95,25 @@ function startGame(){
 function displayMarker(){
     let marker;
     turnIndicator = p1Name;
-    if(turnIndicator = p1Name || p1NameAi){
+    if(turnIndicator == p1Name || p1NameAi){
         marker = "O";
     }
-    else if(turnIndicator = p2Name || aiName){
+    else if(turnIndicator == p2Name || aiName){
         marker = "X";
     }
     let squaresInGrid = document.querySelectorAll(".square");
     for(let i = 0; i < squaresInGrid.length; i++){
         squaresInGrid[i].addEventListener("click", ()=>{
-            squaresInGrid.textContent = marker;
-            console.log("testing");
+            if(squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O"){
+                squaresInGrid[i].textContent = marker;
+                console.log("testing");
+            }
+            else if(squaresInGrid[i].textContent == "X" || squaresInGrid[i].textContent == "O"){
+                alert("Please pick unselected box!");
+            }
+            else{
+                alert("Game bug")
+            }
         })
     }
 }
