@@ -28,7 +28,7 @@ let p1Name;
 let p2Name;
 let p1NameAi;
 let aiName;
-let turnIndicator;
+let currentPlayer;
 
 
 const startBtn = document.querySelectorAll(".start-button");
@@ -71,8 +71,9 @@ function newScreen() {
 
 function newDisplayScreen() {
     document.getElementById("game-board").style.display = "block";
-    turnIndicator = document.getElementById("turn-indicator");
-    turnIndicator.textContent = `${p1Name}'s turn`;
+    currentPlayer = document.getElementById("turn-indicator");
+    
+    currentPlayer.textContent = `${currentPlayer}'s turn`;
 
 }
 
@@ -81,7 +82,6 @@ function startGame(){
     p2Name = document.querySelector("#p2Name").value;
     p1NameAi = document.querySelector("#p1NameAi").value;
     aiName = document.querySelector("#aiName").value;
-    
     // console.log(p1Name);
     // console.log(p2Name);
     // console.log(p1NameAi);
@@ -89,26 +89,31 @@ function startGame(){
 
     closePrompt();
     newScreen();
-    
+}
+
+function alternateTurn(){
 
 }
 
 
 function displayMarker(){
     let marker;
-    turnIndicator = p1Name;
-    if(turnIndicator == p1Name || p1NameAi){
-        marker = "O";
-    }
-    else if(turnIndicator == p2Name || aiName){
-        marker = "X";
-    }
+    currentPlayer = p1Name;
+
     let squaresInGrid = document.querySelectorAll(".square");
     for(let i = 0; i < squaresInGrid.length; i++){
         squaresInGrid[i].addEventListener("click", ()=>{
             if(squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O"){
-                squaresInGrid[i].textContent = marker;
-                console.log("testing");
+                if(currentPlayer == p1Name || p1NameAi){
+                    marker = "O";
+                    squaresInGrid[i].textContent = marker;
+                    currentPlayer = p2Name;
+                }
+                else if(currentPlayer == p2Name || aiName){
+                    marker = "X";
+                    squaresInGrid[i].textContent = marker;
+                    currentPlayer = p1Name;
+                }   
             }
             else if(squaresInGrid[i].textContent == "X" || squaresInGrid[i].textContent == "O"){
                 alert("Please pick unselected box!");
