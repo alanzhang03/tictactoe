@@ -171,3 +171,8 @@ label{
 .square:hover {
     cursor: pointer;
 }
+
+.currentPlayerTextHeading{
+    font-size: 4vh;
+    color: blueviolet;
+}

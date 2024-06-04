@@ -1,4 +1,3 @@
-
 let gameBoardGrid = [
     [0,0,0],
     [0,0,0],
@@ -16,20 +15,17 @@ function player(user){
     return {playerName};
 }
 
-
-
 const selectButtonAi = document.querySelector(".select-button-ai");
 const selectButtonPlayer = document.querySelector(".select-button-player");
 const playerModal = document.querySelector(".player-prompt-modal");
 const aiModal = document.querySelector(".ai-prompt-modal");
 
-
-let p1Name;
-let p2Name;
-let p1NameAi;
-let aiName;
+let p1Name = document.querySelector("#p1Name");
+let p2Name = document.querySelector("#p2Name");
+let p1NameAi = document.querySelector("#p1NameAi");
+let aiName = document.querySelector("#aiName");
 let currentPlayer;
-
+let squaresInGrid = document.querySelectorAll(".square");
 
 const startBtn = document.querySelectorAll(".start-button");
 const closeModal = document.querySelectorAll(".close-prompt");
@@ -37,17 +33,13 @@ const closeModal = document.querySelectorAll(".close-prompt");
 selectButtonAi.addEventListener("click", aiPrompt);
 selectButtonPlayer.addEventListener("click", playerPrompt);
 
-
 for(let i = 0; i < startBtn.length; i++){
     startBtn[i].addEventListener("click", startGame);
-};
-
-
+}
 
 for(let i = 0; i < closeModal.length; i++){
     closeModal[i].addEventListener("click", closePrompt);
-};
-
+}
 
 function aiPrompt(){
     aiModal.showModal();
@@ -71,58 +63,45 @@ function newScreen() {
 
 function newDisplayScreen() {
     document.getElementById("game-board").style.display = "block";
-    currentPlayer = document.getElementById("turn-indicator");
-    
-    if(p1Name.textContent != )
-        currentPlayer.textContent = `${p1Name}'s turn`;
+    currentPlayerTextHeading = document.getElementById("turn-indicator");
+    currentPlayerTextHeading.classList.add("currentPlayerTextHeading");
 
+    if (p1Name.value != "" && p2Name.value != "") {
+        let currentPlayer = p1Name.value;
+        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
+    } else if (p1NameAi.value != "" && aiName.value != "") {
+        let currentPlayer = p1NameAi.value;
+        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
+    }
 }
 
-function startGame(){
-    p1Name = document.querySelector("#p1Name").value;
-    p2Name = document.querySelector("#p2Name").value;
-    p1NameAi = document.querySelector("#p1NameAi").value;
-    aiName = document.querySelector("#aiName").value;
-    // console.log(p1Name);
-    // console.log(p2Name);
-    // console.log(p1NameAi);
-    // console.log(aiName);
-
+function startGame() {
     closePrompt();
     newScreen();
 }
 
-function alternateTurn(){
-
-}
-
-
-function displayMarker(){
+function displayMarker() {
     let marker;
-    currentPlayer = p1Name;
-
-    let squaresInGrid = document.querySelectorAll(".square");
-    for(let i = 0; i < squaresInGrid.length; i++){
-        squaresInGrid[i].addEventListener("click", ()=>{
-            if(squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O"){
-                if(currentPlayer == p1Name || p1NameAi){
+    currentPlayer = p1Name.value;  
+    for (let i = 0; i < squaresInGrid.length; i++) {
+        squaresInGrid[i].addEventListener("click", () => {
+            if (squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O") {
+                if (currentPlayer === p1Name.value || currentPlayer === p1NameAi.value) {
                     marker = "O";
                     squaresInGrid[i].textContent = marker;
-                    currentPlayer = p2Name;
-                }
-                else if(currentPlayer == p2Name || aiName){
+                    currentPlayer = p2Name.value || aiName.value;
+                } else if (currentPlayer === p2Name.value || currentPlayer === aiName.value) {
                     marker = "X";
                     squaresInGrid[i].textContent = marker;
-                    currentPlayer = p1Name;
-                }   
+                    currentPlayer = p1Name.value || p1NameAi.value;
+                }
+                currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+            } else if (squaresInGrid[i].textContent == "X" || squaresInGrid[i].textContent == "O") {
+                alert("Please pick an unselected box!");
+            } else {
+                alert("Game bug");
             }
-            else if(squaresInGrid[i].textContent == "X" || squaresInGrid[i].textContent == "O"){
-                alert("Please pick unselected box!");
-            }
-            else{
-                alert("Game bug")
-            }
-        })
+        });
     }
 }
 
