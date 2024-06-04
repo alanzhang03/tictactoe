@@ -105,4 +105,6 @@ function displayMarker() {
     }
 }
 
-
+function determineWinner(){
+    //todo
+}
