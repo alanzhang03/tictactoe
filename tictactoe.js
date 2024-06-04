@@ -59,9 +59,16 @@ function closePrompt(){
     playerModal.close();
 }
 
+function clearScreen() {
+    document.querySelector(".player-vs-container").style.display = "none";
+    document.querySelector("#select-button-prompt").style.display = "none";
+    newDisplayScreen();
+}
 
-
-
+function newDisplayScreen() {
+    document.getElementById("game-board").style.display = "block";
+    document.getElementById("turn-indicator").textContent = `testing`;
+}
 
 function startGame(){
     p1Name = document.querySelector("#p1Name").value;
@@ -72,8 +79,10 @@ function startGame(){
     console.log(p2Name);
     console.log(p1NameAi);
     console.log(aiName);
-
     closePrompt();
+    clearScreen();
+
+
 }
 
 

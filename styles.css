@@ -99,3 +99,7 @@ label{
     background-color: #D8E4F8;
     cursor: pointer;
 }
+
+#game-board{
+    display: none;
+}
