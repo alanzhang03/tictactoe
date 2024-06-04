@@ -73,7 +73,8 @@ function newDisplayScreen() {
     document.getElementById("game-board").style.display = "block";
     currentPlayer = document.getElementById("turn-indicator");
     
-    currentPlayer.textContent = `${currentPlayer}'s turn`;
+    if(p1Name.textContent != )
+        currentPlayer.textContent = `${p1Name}'s turn`;
 
 }
 
