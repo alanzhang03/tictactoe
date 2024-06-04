@@ -102,4 +102,11 @@ label{
 
 #game-board{
     display: none;
+    text-align: center;
+}
+
+.grid-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

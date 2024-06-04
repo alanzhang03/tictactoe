@@ -28,6 +28,8 @@ let p1Name;
 let p2Name;
 let p1NameAi;
 let aiName;
+let turnIndicator;
+
 const startBtn = document.querySelectorAll(".start-button");
 const closeModal = document.querySelectorAll(".close-prompt");
 
@@ -67,7 +69,9 @@ function clearScreen() {
 
 function newDisplayScreen() {
     document.getElementById("game-board").style.display = "block";
-    document.getElementById("turn-indicator").textContent = `testing`;
+    turnIndicator = document.getElementById("turn-indicator");
+    turnIndicator.textContent = `${p1Name}'s turn`;
+
 }
 
 function startGame(){
@@ -81,7 +85,6 @@ function startGame(){
     console.log(aiName);
     closePrompt();
     clearScreen();
-
 
 }
 
