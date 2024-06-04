@@ -25,9 +25,16 @@ body{
     border: black solid 3px;
     border-radius: 20px;
     transition-duration: 0.2s;
+    background-color: #e9f5fa;
  
 
 }
+
+#picture-player-vs-player, #picture-player-vs-ai{
+    text-align: center;
+    font-size: 4vh;
+}
+
 
 #player-vs-ai-header, #player-vs-player-header{
     text-align: center;
