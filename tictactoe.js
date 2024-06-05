@@ -106,5 +106,25 @@ function displayMarker() {
 }
 
 function determineWinner(){
-    //todo
+    let tile0 = document.querySelector("#tile-0");
+    let tile1 = document.querySelector("#tile-1");
+    let tile2 = document.querySelector("#tile-2");
+    let tile3 = document.querySelector("#tile-3");
+    let tile4 = document.querySelector("#tile-4");
+    let tile5 = document.querySelector("#tile-5");
+    let tile6 = document.querySelector("#tile-6");
+    let tile7 = document.querySelector("#tile-7");
+    let tile8 = document.querySelector("#tile-8");
+
+    if (p1Name.value != "" && p2Name.value != "") {
+        let currentPlayer = p1Name.value;
+        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
+    } else if (p1NameAi.value != "" && aiName.value != "") {
+        let currentPlayer = p1NameAi.value;
+        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
+    }
+    if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
+        alert("")
+    }
+
 }
