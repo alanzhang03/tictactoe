@@ -109,7 +109,12 @@ function displayMarker() {
     }
 }
 
+
+
 function determineWinner(){
+    let resetButton = document.querySelector("#reset-game-button");
+    resetButton.addEventListener("click", resetGame);
+
     let tile0 = document.querySelector("#tile-0");
     let tile1 = document.querySelector("#tile-1");
     let tile2 = document.querySelector("#tile-2");
@@ -126,75 +131,74 @@ function determineWinner(){
         //handle wins for row across
         if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
-            resetButton.style.display = "block";
-            isGameOver = true;
+            resetButton.style.display = "flex";       
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         //handle wins for columns
         else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         //handle the 2 diagonals
         else if(tile0.textContent == "O" && tile4.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile0.textContent == "X" && tile4.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
-            isGameOver = true;
+            
         }
         else if(tile2.textContent == "O" && tile4.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
@@ -293,7 +297,13 @@ function determineWinner(){
 }
 
 
-const resetButton = document.querySelector("#reset-game-button");
+function resetGame(){
+    for(let i = 0; i < squaresInGrid.length; i++){
+        squaresInGrid[i].textContent = "";
+    }
+}
+
+
 
 
 

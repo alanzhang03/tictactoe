@@ -109,7 +109,7 @@ label{
 }
 
 .start-button:hover, .close-prompt:hover{
-    background-color: #D8E4F8;
+    background-color: #a1c0f0;
     cursor: pointer;
 }
 
@@ -178,11 +178,24 @@ label{
 }
 
 #reset-game-button{
-    
+    font-size: 2vh;
     display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #75a5f3;
+    color: white;
+
     
 }
 
 #reset-game-button-container{
+    display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+#reset-game-button:hover{
+    cursor: pointer;
+    background-color: #a1c0f0;
 }
