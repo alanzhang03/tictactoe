@@ -172,7 +172,7 @@ label{
     cursor: pointer;
 }
 
-.currentPlayerTextHeading{
+#turn-indicator, #display-winner{
     font-size: 4vh;
     color: blueviolet;
 }

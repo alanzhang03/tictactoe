@@ -63,8 +63,8 @@ function newScreen() {
 
 function newDisplayScreen() {
     document.getElementById("game-board").style.display = "block";
-    currentPlayerTextHeading = document.getElementById("turn-indicator");
-    currentPlayerTextHeading.classList.add("currentPlayerTextHeading");
+    currentPlayerTextHeading = document.querySelector("#turn-indicator");
+
 
     if (p1Name.value != "" && p2Name.value != "") {
         let currentPlayer = p1Name.value;
@@ -78,7 +78,7 @@ function newDisplayScreen() {
 function startGame() {
     closePrompt();
     newScreen();
-    determineWinner();
+
 }
 
 function displayMarker() {
@@ -97,6 +97,7 @@ function displayMarker() {
                     currentPlayer = p1Name.value || p1NameAi.value;
                 }
                 currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+                determineWinner();
             } else if (squaresInGrid[i].textContent == "X" || squaresInGrid[i].textContent == "O") {
                 alert("Please pick an unselected box!");
             } else {
@@ -116,14 +117,20 @@ function determineWinner(){
     let tile6 = document.querySelector("#tile-6");
     let tile7 = document.querySelector("#tile-7");
     let tile8 = document.querySelector("#tile-8");
+    // let displayWinner = docuement.querySelector("#display-winner");
 
     if (p1Name.value != "" && p2Name.value != "") {
-        if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
-            alert(`${p2Name} WINS! Congrats!`);
+        if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
+            alert(`${p2Name.value} WINS! Congrats!`);
+            
+            displayWinner.textContent = `${p1Name.value} WINS! Congrats!`;
         }
-        else if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
-            alert(`${p1Name} WINS! Congrats!`);
+        else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
+            alert(`${p2Name.value} WINS! Congrats!`);
+            
+            //displayWinner.textContent = `${p2Name.value} WINS! Congrats!`;
         }
+
     } else if (p1NameAi.value != "" && aiName.value != "") {
         let currentPlayer = p1NameAi.value;
         currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
