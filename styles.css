@@ -178,5 +178,11 @@ label{
 }
 
 #reset-game-button{
+    
     display: none;
+    
+}
+
+#reset-game-button-container{
+    align-items: center;
 }

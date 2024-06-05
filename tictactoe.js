@@ -127,76 +127,94 @@ function determineWinner(){
         if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         //handle wins for columns
         else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         //handle the 2 diagonals
         else if(tile0.textContent == "O" && tile4.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile0.textContent == "X" && tile4.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            isGameOver = true;
         }
         else if(tile2.textContent == "O" && tile4.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            
         }
         else if(tile2.textContent == "X" && tile4.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            
         }
         else{
-            currentPlayerTextHeading.textContent = `The game is a tie! Press the Reset game Button to Play Again!`;
-            resetButton.style.display = "block";
+            if(tile0.textContent != "" && tile1.textContent != "" && tile2.textContent != "" && tile3.textContent != "" && tile4.textContent != "" &&tile5.textContent != "" && tile6.textContent != "" && tile7.textContent != "" && tile8.textContent != ""){
+                currentPlayerTextHeading.textContent = `The game is a tie! Press the Reset game Button to Play Again!`;
+                resetButton.style.display = "block";
+                
+            }
         }
-    } 
-
-
+    }
+        
     else if (p1NameAi.value != "" && aiName.value != "") {
         //handle wins for row across
         if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
@@ -266,11 +284,12 @@ function determineWinner(){
             resetButton.style.display = "block";
         }
         else{
-            currentPlayerTextHeading.textContent = `The game is a tie! Press the Reset game Button to Play Again!`;
-            resetButton.style.display = "block";
+            if(tile0.textContent != "" && tile1.textContent != "" && tile2.textContent != "" && tile3.textContent != "" && tile4.textContent != "" &&tile5.textContent != "" && tile6.textContent != "" && tile7.textContent != "" && tile8.textContent != ""){
+                currentPlayerTextHeading.textContent = `The game is a tie! Press the Reset game Button to Play Again!`;
+                resetButton.style.display = "block";    
+            }
         }
     }
-    
 }
 
 
