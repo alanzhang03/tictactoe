@@ -25,6 +25,7 @@ let p2Name = document.querySelector("#p2Name");
 let p1NameAi = document.querySelector("#p1NameAi");
 let aiName = document.querySelector("#aiName");
 let currentPlayer;
+let currentPlayerTextHeading = document.querySelector("#turn-indicator");
 let squaresInGrid = document.querySelectorAll(".square");
 
 const startBtn = document.querySelectorAll(".start-button");
@@ -61,11 +62,12 @@ function newScreen() {
     displayMarker();
 }
 
+
+
+
 function newDisplayScreen() {
     document.getElementById("game-board").style.display = "block";
-    currentPlayerTextHeading = document.querySelector("#turn-indicator");
-
-
+    
     if (p1Name.value != "" && p2Name.value != "") {
         let currentPlayer = p1Name.value;
         currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
@@ -117,23 +119,58 @@ function determineWinner(){
     let tile6 = document.querySelector("#tile-6");
     let tile7 = document.querySelector("#tile-7");
     let tile8 = document.querySelector("#tile-8");
-    // let displayWinner = docuement.querySelector("#display-winner");
+
+    
 
     if (p1Name.value != "" && p2Name.value != "") {
+        //handle wins for row across
         if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
-            alert(`${p2Name.value} WINS! Congrats!`);
-            
-            displayWinner.textContent = `${p1Name.value} WINS! Congrats!`;
+            currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
-            alert(`${p2Name.value} WINS! Congrats!`);
-            
-            //displayWinner.textContent = `${p2Name.value} WINS! Congrats!`;
+            currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
         }
+        else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
+            currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
+        }
+        else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
+            currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
+        }
+        else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
+            currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
+        }
+        else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
+            currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
+        }
+        //handle wins for columns
+        else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
+            currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
+        }
+        else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
+            currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
+        }
+        else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
+            currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
+        }
+        else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
+            currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
+        }
+        else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
+            currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
+        }
+        else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
+            currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
+        }
+    } 
 
-    } else if (p1NameAi.value != "" && aiName.value != "") {
-        let currentPlayer = p1NameAi.value;
-        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
+
+    else if (p1NameAi.value != "" && aiName.value != "") {
+        if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
+            currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
+        }
+        else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
+            currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
+        }
     }
 
 
