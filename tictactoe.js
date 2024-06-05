@@ -125,6 +125,12 @@ function determineWinner(){
     let tile7 = document.querySelector("#tile-7");
     let tile8 = document.querySelector("#tile-8");
 
+
+    //todo keep track of score
+    let p1Score;
+    let p2Score;
+    let p1ScoreAi;
+    let aiScore;
     
 
     if (p1Name.value != "" && p2Name.value != "") {
@@ -304,6 +310,8 @@ function resetGame(){
     currentPlayerTextHeading.textContent = p1Name.value ? `${p1Name.value}'s turn!` : `${p1NameAi.value}'s turn!`;
     document.querySelector("#reset-game-button").style.display = "none";
 }
+
+
 
 
 
