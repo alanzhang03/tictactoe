@@ -78,6 +78,7 @@ function newDisplayScreen() {
 function startGame() {
     closePrompt();
     newScreen();
+    determineWinner();
 }
 
 function displayMarker() {
@@ -117,14 +118,16 @@ function determineWinner(){
     let tile8 = document.querySelector("#tile-8");
 
     if (p1Name.value != "" && p2Name.value != "") {
-        let currentPlayer = p1Name.value;
-        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
+        if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
+            alert(`${p2Name} WINS! Congrats!`);
+        }
+        else if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
+            alert(`${p1Name} WINS! Congrats!`);
+        }
     } else if (p1NameAi.value != "" && aiName.value != "") {
         let currentPlayer = p1NameAi.value;
         currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
     }
-    if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
-        alert("")
-    }
+
 
 }
