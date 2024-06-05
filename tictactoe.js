@@ -301,7 +301,8 @@ function resetGame(){
     for(let i = 0; i < squaresInGrid.length; i++){
         squaresInGrid[i].textContent = "";
     }
-    currentPlayerTextHeading.textContet = " ";
+    currentPlayerTextHeading.textContent = p1Name.value ? `${p1Name.value}'s turn!` : `${p1NameAi.value}'s turn!`;
+    document.querySelector("#reset-game-button").style.display = "none";
 }
 
 
