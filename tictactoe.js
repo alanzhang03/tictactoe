@@ -301,6 +301,7 @@ function resetGame(){
     for(let i = 0; i < squaresInGrid.length; i++){
         squaresInGrid[i].textContent = "";
     }
+    currentPlayerTextHeading.textContet = " ";
 }
 
 

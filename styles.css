@@ -1,6 +1,7 @@
 
 body{
     background-color: #D8E4F8;
+    font-family: Arial, "Helvetica", sans-serif;
 }
 
 #game-header{
@@ -134,6 +135,7 @@ label{
     font-size: 4vh;
     font-weight: bold;
     border: solid black 2.1px;
+
 }
 
 #tile-0{
