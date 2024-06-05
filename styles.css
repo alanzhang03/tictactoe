@@ -176,3 +176,7 @@ label{
     font-size: 4vh;
     color: blueviolet;
 }
+
+#reset-game-button{
+    display: none;
+}
