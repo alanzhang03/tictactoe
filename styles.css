@@ -204,3 +204,9 @@ label{
     cursor: pointer;
     background-color: #a1c0f0;
 }
+
+#player-vs-player-score, #player-vs-ai-score{
+    font-weight: bold;
+    font-size: 3vh;
+    color: blueviolet;
+}

@@ -1,20 +1,3 @@
-let gameBoardGrid = [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0],
-];
-
-let gameBoard = {
-    grid: gameBoardGrid,
-    gameStart: false,
-    gameEnd: false
-};
-
-function player(user){
-    const playerName = user;
-    return {playerName};
-}
-
 const selectButtonAi = document.querySelector(".select-button-ai");
 const selectButtonPlayer = document.querySelector(".select-button-player");
 const playerModal = document.querySelector(".player-prompt-modal");
@@ -83,9 +66,131 @@ function startGame() {
 
 }
 
+function evaluateBoard(board) {
+    // Check rows for win
+    for (let row = 0; row < 3; row++) {
+        if (board[row][0] === board[row][1] && board[row][1] === board[row][2]) {
+            if (board[row][0] === 'X') return +10;
+            else if (board[row][0] === 'O') return -10;
+        }
+    }
+
+    // Check columns for win
+    for (let col = 0; col < 3; col++) {
+        if (board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
+            if (board[0][col] === 'X') return +10;
+            else if (board[0][col] === 'O') return -10;
+        }
+    }
+
+    // Check diagonals for win
+    if (board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+        if (board[0][0] === 'X') return +10;
+        else if (board[0][0] === 'O') return -10;
+    }
+    if (board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+        if (board[0][2] === 'X') return +10;
+        else if (board[0][2] === 'O') return -10;
+    }
+
+    // No win or loss
+    return 0;
+}
+
+function minimax(board, depth, isMaximizing) {
+    let score = evaluateBoard(board);
+
+    // If Maximizer has won the game, return evaluated score
+    if (score === 10) return score - depth;
+
+    // If Minimizer has won the game, return evaluated score
+    if (score === -10) return score + depth;
+
+    // If there are no more moves and no winner, it is a tie
+    if (isMovesLeft(board) === false) return 0;
+
+    // Maximizer's move
+    if (isMaximizing) {
+        let best = -1000;
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (board[i][j] === '') {
+                    board[i][j] = 'X';
+                    best = Math.max(best, minimax(board, depth + 1, !isMaximizing));
+                    board[i][j] = '';
+                }
+            }
+        }
+        return best;
+    }
+    // Minimizer's move
+    else {
+        let best = 1000;
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (board[i][j] === '') {
+                    board[i][j] = 'O';
+                    best = Math.min(best, minimax(board, depth + 1, !isMaximizing));
+                    board[i][j] = '';
+                }
+            }
+        }
+        return best;
+    }
+}
+
+function isMovesLeft(board) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] === '') return true;
+        }
+    }
+    return false;
+}
+
+function findBestMove(board) {
+    let bestVal = -1000;
+    let bestMove = { row: -1, col: -1 };
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] === '') {
+                board[i][j] = 'X';
+                let moveVal = minimax(board, 0, false);
+                board[i][j] = '';
+                if (moveVal > bestVal) {
+                    bestMove.row = i;
+                    bestMove.col = j;
+                    bestVal = moveVal;
+                }
+            }
+        }
+    }
+    return bestMove;
+}
+function aiMove() {
+    let board = [
+        [squaresInGrid[0].textContent, squaresInGrid[1].textContent, squaresInGrid[2].textContent],
+        [squaresInGrid[3].textContent, squaresInGrid[4].textContent, squaresInGrid[5].textContent],
+        [squaresInGrid[6].textContent, squaresInGrid[7].textContent, squaresInGrid[8].textContent]
+    ];
+
+    let bestMove = findBestMove(board);
+    if (bestMove.row !== -1 && bestMove.col !== -1) {
+        let index = bestMove.row * 3 + bestMove.col;
+        squaresInGrid[index].textContent = "X";
+        currentPlayer = p1NameAi.value;
+        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+        determineWinner();
+    }
+}
+
+
 function displayMarker() {
     let marker;
-    currentPlayer = p1Name.value;  
+    currentPlayer = p1Name.value || p1NameAi.value;
     for (let i = 0; i < squaresInGrid.length; i++) {
         squaresInGrid[i].addEventListener("click", () => {
             if (squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O") {
@@ -93,17 +198,20 @@ function displayMarker() {
                     marker = "O";
                     squaresInGrid[i].textContent = marker;
                     currentPlayer = p2Name.value || aiName.value;
-                } else if (currentPlayer === p2Name.value || currentPlayer === aiName.value) {
+                    currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+                    determineWinner();
+                    if (currentPlayer === aiName.value) {
+                        setTimeout(aiMove, 500); // AI makes a move after a short delay
+                    }
+                } else if (currentPlayer === p2Name.value) {
                     marker = "X";
                     squaresInGrid[i].textContent = marker;
-                    currentPlayer = p1Name.value || p1NameAi.value;
+                    currentPlayer = p1Name.value;
+                    currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+                    determineWinner();
                 }
-                currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
-                determineWinner();
-            } else if (squaresInGrid[i].textContent == "X" || squaresInGrid[i].textContent == "O") {
-                alert("Please pick an unselected box!");
             } else {
-                alert("Game bug");
+                alert("Please pick an unselected box!");
             }
         });
     }
@@ -361,7 +469,8 @@ function resetGame(){
     for(let i = 0; i < squaresInGrid.length; i++){
         squaresInGrid[i].textContent = "";
     }
-    currentPlayerTextHeading.textContent = p1Name.value ? `${p1Name.value}'s turn!` : `${p1NameAi.value}'s turn!`;
+    currentPlayer = p1Name.value || p1NameAi.value;
+    currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
     document.querySelector("#reset-game-button").style.display = "none";
 }
 
