@@ -80,7 +80,7 @@ body{
 .select-button-ai:hover,.select-button-player:hover{
     transform: scale(1.05);
     cursor: pointer;
-    transition-duration: .2s;
+    transition-duration: .4s;
 }
 
 .player-prompt-modal, .ai-prompt-modal{
