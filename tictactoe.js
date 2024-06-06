@@ -67,7 +67,7 @@ function startGame() {
 }
 
 function evaluateBoard(board) {
-    // Check rows for win
+
     for (let row = 0; row < 3; row++) {
         if (board[row][0] === board[row][1] && board[row][1] === board[row][2]) {
             if (board[row][0] === 'X') return +10;
@@ -75,7 +75,7 @@ function evaluateBoard(board) {
         }
     }
 
-    // Check columns for win
+
     for (let col = 0; col < 3; col++) {
         if (board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
             if (board[0][col] === 'X') return +10;
@@ -83,7 +83,7 @@ function evaluateBoard(board) {
         }
     }
 
-    // Check diagonals for win
+
     if (board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
         if (board[0][0] === 'X') return +10;
         else if (board[0][0] === 'O') return -10;
@@ -93,23 +93,20 @@ function evaluateBoard(board) {
         else if (board[0][2] === 'O') return -10;
     }
 
-    // No win or loss
+
     return 0;
 }
 
 function minimax(board, depth, isMaximizing) {
     let score = evaluateBoard(board);
 
-    // If Maximizer has won the game, return evaluated score
+
     if (score === 10) return score - depth;
 
-    // If Minimizer has won the game, return evaluated score
     if (score === -10) return score + depth;
 
-    // If there are no more moves and no winner, it is a tie
     if (isMovesLeft(board) === false) return 0;
 
-    // Maximizer's move
     if (isMaximizing) {
         let best = -1000;
 
@@ -124,7 +121,7 @@ function minimax(board, depth, isMaximizing) {
         }
         return best;
     }
-    // Minimizer's move
+
     else {
         let best = 1000;
 
@@ -201,7 +198,7 @@ function displayMarker() {
                     currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
                     determineWinner();
                     if (currentPlayer === aiName.value) {
-                        setTimeout(aiMove, 500); // AI makes a move after a short delay
+                        setTimeout(aiMove, 400); 
                     }
                 } else if (currentPlayer === p2Name.value) {
                     marker = "X";
@@ -217,7 +214,7 @@ function displayMarker() {
     }
 }
 
-//todo keep track of score
+
 let p1Score = 0;
 let p2Score = 0;
 let p1ScoreAi = 0;

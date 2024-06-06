@@ -1,8 +1,16 @@
+html{
+    height: 100%;
+}
+
 
 body{
-
+    margin: 0;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100%;
     font-family: 'Permanent Marker', cursive;
     background-color: #D8E4F8;
+
 }
    
 
@@ -209,4 +217,27 @@ label{
     font-weight: bold;
     font-size: 3vh;
     color: blueviolet;
+}
+
+
+footer{
+    background-color: #f6f6f6;
+    padding: 1.5em;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+#github-logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#github-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5vh;
+    height: 1.25vw;
+    padding-left: 10px;
 }
