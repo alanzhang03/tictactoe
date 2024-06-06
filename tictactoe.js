@@ -127,93 +127,122 @@ function determineWinner(){
 
 
     //todo keep track of score
-    let p1Score;
-    let p2Score;
-    let p1ScoreAi;
-    let aiScore;
-    
+    let p1Score = 0;
+    let p2Score = 0;
+    let p1ScoreAi = 0;
+    let aiScore = 0;
 
+    const playerScoreDisplay = document.querySelector("#player-vs-player-score");
+    const aiScoreDisplay = document.querySelector("#player-vs-ai-score");
+
+    if(p1Name.value != "" && p2Name.value != ""){
+        playerScoreDisplay.textContent = `Player 1 Score: ${p1Score} Player 2 Score: ${p2Score}`;
+    }
+    else if(p1NameAi.value != "" && aiName.value != ""){
+        aiScoreDisplay.textContent = `Player 1 Score: ${p1ScoreAi} Ai Score: ${aiScore}`;
+    }
+    else{
+        alert("error");
+    }
+    
+    
     if (p1Name.value != "" && p2Name.value != "") {
         //handle wins for row across
         if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
-            resetButton.style.display = "flex";       
+            resetButton.style.display = "flex";
+            p1Score += 1;        
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         //handle wins for columns
         else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         //handle the 2 diagonals
         else if(tile0.textContent == "O" && tile4.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile0.textContent == "X" && tile4.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         else if(tile2.textContent == "O" && tile4.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1Score += 1;   
             
         }
         else if(tile2.textContent == "X" && tile4.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p2Score += 1;
             
         }
         else{
@@ -230,68 +259,85 @@ function determineWinner(){
         if(tile0.textContent == "O" && tile1.textContent == "O" && tile2.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
+            
         }
         else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         //handle wins for columns
         else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         //handle the 2 diagonals
         else if(tile0.textContent == "O" && tile4.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile0.textContent == "X" && tile4.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         else if(tile2.textContent == "O" && tile4.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            p1ScoreAi += 1;
         }
         else if(tile2.textContent == "X" && tile4.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
+            aiScore += 1;
         }
         else{
             if(tile0.textContent != "" && tile1.textContent != "" && tile2.textContent != "" && tile3.textContent != "" && tile4.textContent != "" &&tile5.textContent != "" && tile6.textContent != "" && tile7.textContent != "" && tile8.textContent != ""){
