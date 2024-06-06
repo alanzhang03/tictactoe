@@ -16,7 +16,7 @@ body{
 
 #game-header{
     text-align: center;
-    font-size: 6vh;
+    font-size: 4vh;
 
 }
 
@@ -80,6 +80,7 @@ body{
 .select-button-ai:hover,.select-button-player:hover{
     transform: scale(1.05);
     cursor: pointer;
+    transition-duration: .2s;
 }
 
 .player-prompt-modal, .ai-prompt-modal{
@@ -206,6 +207,8 @@ label{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
 }
 
 #reset-game-button:hover{
@@ -221,8 +224,8 @@ label{
 
 
 footer{
-    background-color: #f6f6f6;
-    padding: 1.5em;
+    background-color: #ffe0db;
+    padding: 1.6em;
     text-align: center;
     margin-top: auto;
 }
@@ -232,12 +235,18 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 2vh;
 }
 #github-logo{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5vh;
-    height: 1.25vw;
+    width: 4vh;
+    height: 2vw;
     padding-left: 10px;
+}
+#github-logo:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: .3s;
 }
