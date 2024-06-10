@@ -345,7 +345,7 @@ function determineWinner(){
         }
         else{
             if(tile0.textContent != "" && tile1.textContent != "" && tile2.textContent != "" && tile3.textContent != "" && tile4.textContent != "" &&tile5.textContent != "" && tile6.textContent != "" && tile7.textContent != "" && tile8.textContent != ""){
-                currentPlayerTextHeading.textContent = `The game is a tie! Press the Reset game Button to Play Again!`;
+                currentPlayerTextHeading.textContent = `Tie Game! Press Reset Game Button to Play Again!`;
                 resetButton.style.display = "block";
                 playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
             }
