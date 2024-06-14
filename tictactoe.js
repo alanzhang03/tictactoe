@@ -14,6 +14,8 @@ let squaresInGrid = document.querySelectorAll(".square");
 const startBtn = document.querySelectorAll(".start-button");
 const closeModal = document.querySelectorAll(".close-prompt");
 
+let gameOver = false;
+
 selectButtonAi.addEventListener("click", aiPrompt);
 selectButtonPlayer.addEventListener("click", playerPrompt);
 
@@ -190,25 +192,27 @@ function displayMarker() {
     currentPlayer = p1Name.value || p1NameAi.value;
     for (let i = 0; i < squaresInGrid.length; i++) {
         squaresInGrid[i].addEventListener("click", () => {
-            if (squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O") {
-                if (currentPlayer === p1Name.value || currentPlayer === p1NameAi.value) {
-                    marker = "O";
-                    squaresInGrid[i].textContent = marker;
-                    currentPlayer = p2Name.value || aiName.value;
-                    currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
-                    determineWinner();
-                    if (currentPlayer === aiName.value) {
-                        setTimeout(aiMove, 400); 
+            if (!gameOver) { 
+                if (squaresInGrid[i].textContent != "X" && squaresInGrid[i].textContent != "O") {
+                    if (currentPlayer === p1Name.value || currentPlayer === p1NameAi.value) {
+                        marker = "O";
+                        squaresInGrid[i].textContent = marker;
+                        currentPlayer = p2Name.value || aiName.value;
+                        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+                        determineWinner();
+                        if (currentPlayer === aiName.value) {
+                            setTimeout(aiMove, 400);
+                        }
+                    } else if (currentPlayer === p2Name.value) {
+                        marker = "X";
+                        squaresInGrid[i].textContent = marker;
+                        currentPlayer = p1Name.value;
+                        currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
+                        determineWinner();
                     }
-                } else if (currentPlayer === p2Name.value) {
-                    marker = "X";
-                    squaresInGrid[i].textContent = marker;
-                    currentPlayer = p1Name.value;
-                    currentPlayerTextHeading.textContent = `${currentPlayer}'s turn`;
-                    determineWinner();
+                } else {
+                    alert("Please pick an unselected box!");
                 }
-            } else {
-                alert("Please pick an unselected box!");
             }
         });
     }
@@ -248,12 +252,14 @@ function determineWinner(){
             resetButton.style.display = "flex";
             p1Score++;      
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;  
+            gameOver = true;
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
             
         }
         else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
@@ -261,25 +267,28 @@ function determineWinner(){
             resetButton.style.display = "block";
             p1Score++;  
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`; 
-            
+            gameOver = true;
         }
         else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value}'s WINS! Congrats!`;
             resetButton.style.display = "block";
             p1Score++;  
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         //handle wins for columns
         else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
@@ -287,36 +296,42 @@ function determineWinner(){
             resetButton.style.display = "block";
             p1Score++;    
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value}'s WINS! Congrats!`;
             resetButton.style.display = "block";
             p1Score++;    
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value}'s WINS! Congrats!`;
             resetButton.style.display = "block";
             p1Score++;   
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         //handle the 2 diagonals
         else if(tile0.textContent == "O" && tile4.textContent == "O" && tile8.textContent == "O" ){
@@ -324,30 +339,35 @@ function determineWinner(){
             resetButton.style.display = "block";
             p1Score++;  
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile0.textContent == "X" && tile4.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile2.textContent == "O" && tile4.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1Name.value}'s WINS! Congrats!`;
             resetButton.style.display = "block";
             p1Score++;   
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else if(tile2.textContent == "X" && tile4.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${p2Name.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p2Score++;
             playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+            gameOver = true;
         }
         else{
             if(tile0.textContent != "" && tile1.textContent != "" && tile2.textContent != "" && tile3.textContent != "" && tile4.textContent != "" &&tile5.textContent != "" && tile6.textContent != "" && tile7.textContent != "" && tile8.textContent != ""){
                 currentPlayerTextHeading.textContent = `Tie Game! Press Reset Game Button to Play Again!`;
                 resetButton.style.display = "block";
                 playerScoreDisplay.innerHTML = `${p1Name.value}'s Score: ${p1Score} <br> ${p2Name.value}'s Score: ${p2Score}`;
+                gameOver = true;
             }
         }
     }
@@ -359,36 +379,42 @@ function determineWinner(){
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile0.textContent == "X" && tile1.textContent == "X" && tile2.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile3.textContent == "O" && tile4.textContent == "O" && tile5.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile3.textContent == "X" && tile4.textContent == "X" && tile5.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile6.textContent == "O" && tile7.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile6.textContent == "X" && tile7.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         //handle wins for columns
         else if(tile0.textContent == "O" && tile3.textContent == "O" && tile6.textContent == "O" ){
@@ -396,36 +422,42 @@ function determineWinner(){
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile0.textContent == "X" && tile3.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile1.textContent == "O" && tile4.textContent == "O" && tile7.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile1.textContent == "X" && tile4.textContent == "X" && tile7.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile2.textContent == "O" && tile5.textContent == "O" && tile8.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile2.textContent == "X" && tile5.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         //handle the 2 diagonals
         else if(tile0.textContent == "O" && tile4.textContent == "O" && tile8.textContent == "O" ){
@@ -433,29 +465,34 @@ function determineWinner(){
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile0.textContent == "X" && tile4.textContent == "X" && tile8.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile2.textContent == "O" && tile4.textContent == "O" && tile6.textContent == "O" ){
             currentPlayerTextHeading.textContent = `${p1NameAi.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             p1ScoreAi++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else if(tile2.textContent == "X" && tile4.textContent == "X" && tile6.textContent == "X" ){
             currentPlayerTextHeading.textContent = `${aiName.value} WINS! Congrats!`;
             resetButton.style.display = "block";
             aiScore++;
             aiScoreDisplay.innerHTML = `${p1NameAi.value}'s Score: ${p1ScoreAi} <br> ${aiName.value}'s Score: ${aiScore}`;  
+            gameOver = true;
         }
         else{
             if(tile0.textContent != "" && tile1.textContent != "" && tile2.textContent != "" && tile3.textContent != "" && tile4.textContent != "" &&tile5.textContent != "" && tile6.textContent != "" && tile7.textContent != "" && tile8.textContent != ""){
                 currentPlayerTextHeading.textContent = `The game is a tie! Press the Reset game Button to Play Again!`;
                 resetButton.style.display = "block";    
+                gameOver = true;
             }
         }
     }
@@ -469,6 +506,7 @@ function resetGame(){
     currentPlayer = p1Name.value || p1NameAi.value;
     currentPlayerTextHeading.textContent = `${currentPlayer}'s turn!`;
     document.querySelector("#reset-game-button").style.display = "none";
+    gameOver = false;
 }
 
 
