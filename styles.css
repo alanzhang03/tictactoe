@@ -84,7 +84,7 @@ body{
 }
 
 .player-prompt-modal, .ai-prompt-modal{
-    height: 25vh;
+    height: 27vh;
     width: 15vw;
     border: black solid 4px;
     border-radius: 10px;
@@ -104,8 +104,6 @@ label{
     font-size: 2.5vh;
     
 }
-
-
 
 #p1Name, #p2Name, #aiName, #p1NameAi{
     border-radius: 5px;
