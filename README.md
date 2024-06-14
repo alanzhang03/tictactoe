@@ -12,4 +12,4 @@ The AI game mode uses the minimax algorithm to make decisions, taking into accou
 
 ## Technologies Used
 - Minimax Algorithm
-- Programming Language (specify the language, e.g., Python, JavaScript)
+- Javascript, HTML, CSS
