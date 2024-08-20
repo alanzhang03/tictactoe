@@ -1,241 +1,258 @@
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	font-family: "Permanent Marker";
-	background-color: #d8e4f8;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  font-family: "Permanent Marker";
+  background-color: #d8e4f8;
 }
 
 #game-header {
-	text-align: center;
-	font-size: 4vh;
+  text-align: center;
+  font-size: 4vh;
 }
 
 .player-vs-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #player-vs-ai-box,
 #player-vs-player-box {
-	margin-left: 2vw;
-	margin-right: 2vw;
-	margin-top: 18vh;
-	height: 20vh;
-	width: 12vw;
-	border: black solid 3px;
-	border-radius: 20px;
-	transition-duration: 0.2s;
-	background-color: #e9f5fa;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 18vh;
+  height: 20vh;
+  width: 12vw;
+  border: black solid 3px;
+  border-radius: 20px;
+  transition-duration: 0.2s;
+  background-color: #e9f5fa;
 }
 
 #picture-player-vs-player,
 #picture-player-vs-ai {
-	text-align: center;
-	font-size: 4vh;
+  text-align: center;
+  font-size: 4vh;
 }
 
 #player-vs-ai-header,
 #player-vs-player-header {
-	text-align: center;
-	padding-top: 2vh;
-	font-size: 3vh;
-	font-weight: bold;
+  text-align: center;
+  padding-top: 2vh;
+  font-size: 3vh;
+  font-weight: bold;
 }
 
 #player-vs-ai-box:hover,
 #player-vs-player-box:hover {
-	transform: scale(1.05);
-	cursor: pointer;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .select-button-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .select-button-ai,
 .select-button-player {
-	margin-top: 2vh;
-	width: 8vw;
-	height: 3vh;
-	border-radius: 10px;
+  margin-top: 2vh;
+  width: 8vw;
+  height: 3vh;
+  border-radius: 10px;
 }
 
 .select-button-ai:hover,
 .select-button-player:hover {
-	transform: scale(1.05);
-	cursor: pointer;
-	transition-duration: 0.4s;
+  transform: scale(1.05);
+  cursor: pointer;
+  transition-duration: 0.4s;
 }
 
 .player-prompt-modal,
 .ai-prompt-modal {
-	height: 27vh;
-	width: 15vw;
-	border: black solid 4px;
-	border-radius: 10px;
+  height: 27vh;
+  width: 15vw;
+  border: black solid 4px;
+  border-radius: 10px;
 }
 
 #player-prompt,
 #ai-prompt {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 label {
-	font-size: 2.5vh;
+  font-size: 2.5vh;
 }
 
 #p1Name,
 #p2Name,
 #aiName,
 #p1NameAi {
-	border-radius: 5px;
-	font-size: 2vh;
-	border: black solid 3px;
+  border-radius: 5px;
+  font-size: 2vh;
+  border: black solid 3px;
 }
 
 .start-button,
 .close-prompt {
-	font-size: 2vh;
-	border: solid black 2px;
-	border-radius: 5px;
-	color: white;
-	background-color: #75a5f3;
+  font-size: 2vh;
+  border: solid black 2px;
+  border-radius: 5px;
+  color: white;
+  background-color: #75a5f3;
 }
 
 .start-button:hover,
 .close-prompt:hover {
-	background-color: #a1c0f0;
-	cursor: pointer;
+  background-color: #a1c0f0;
+  cursor: pointer;
 }
 
 #game-board {
-	display: none;
-	text-align: center;
+  display: none;
+  text-align: center;
 }
 
 .grid-container {
-	display: grid;
-	grid-template-columns: repeat(3, 20vh);
-	justify-content: center;
-	gap: 0; /* No gap between grid items */
+  display: grid;
+  grid-template-columns: repeat(3, 20vh);
+  justify-content: center;
+  gap: 0; /* No gap between grid items */
 }
 
 .square {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 20vh;
-	width: 20vh;
-	font-size: 4vh;
-	font-weight: bold;
-	border: solid black 2.1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 20vh;
+  font-size: 4vh;
+  font-weight: bold;
+  border: solid black 2.1px;
 }
 
 #tile-0 {
-	border-top-style: none;
-	border-left-style: none;
+  border-top-style: none;
+  border-left-style: none;
 }
 #tile-1 {
-	border-top-style: none;
+  border-top-style: none;
 }
 #tile-2 {
-	border-top-style: none;
-	border-right-style: none;
+  border-top-style: none;
+  border-right-style: none;
 }
 #tile-3 {
-	border-left-style: none;
+  border-left-style: none;
 }
 
 #tile-5 {
-	border-right-style: none;
+  border-right-style: none;
 }
 #tile-6 {
-	border-bottom-style: none;
-	border-left-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
 }
 #tile-7 {
-	border-bottom-style: none;
+  border-bottom-style: none;
 }
 #tile-8 {
-	border-bottom-style: none;
-	border-right-style: none;
+  border-bottom-style: none;
+  border-right-style: none;
 }
 
 .square:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #turn-indicator,
 #display-winner {
-	font-size: 4vh;
-	color: blueviolet;
+  font-size: 4vh;
+  color: blueviolet;
 }
 
 #reset-game-button {
-	font-size: 2vh;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	border-radius: 10px;
-	background-color: #75a5f3;
-	color: white;
+  font-size: 2vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #75a5f3;
+  color: white;
 }
 
 #reset-game-button-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 3vh;
-	padding-bottom: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
 
 #reset-game-button:hover {
-	cursor: pointer;
-	background-color: #a1c0f0;
+  cursor: pointer;
+  background-color: #a1c0f0;
 }
 
 #player-vs-player-score,
 #player-vs-ai-score {
-	font-weight: bold;
-	font-size: 3vh;
-	color: blueviolet;
+  font-weight: bold;
+  font-size: 3vh;
+  color: blueviolet;
 }
 
 footer {
-	background-color: #ffe0db;
-	padding: 1.6em;
-	text-align: center;
-	margin-top: auto;
+  background-color: #ffe0db;
+  padding: 1.6em;
+  text-align: center;
+  margin-top: auto;
 }
 
 #github-logo-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vh;
 }
 #github-logo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 4vh;
-	height: 2vw;
-	padding-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vh;
+  height: 2vw;
+  padding-left: 10px;
 }
 #github-logo:hover {
-	transform: scale(1.1);
-	cursor: pointer;
-	transition: 0.3s;
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+@media (max-width: 1799px) and (min-width: 900px) {
+  #player-vs-ai-header,
+  #player-vs-player-header {
+    text-align: center;
+    padding-top: 2vh;
+    font-size: 2vh;
+    font-weight: bold;
+  }
+  .player-prompt-modal,
+  .ai-prompt-modal {
+    height: 30vh;
+    width: 17.5vw;
+    border: black solid 4px;
+    border-radius: 10px;
+  }
 }
