@@ -129,7 +129,7 @@ label {
   display: grid;
   grid-template-columns: repeat(3, 20vh);
   justify-content: center;
-  gap: 0; /* No gap between grid items */
+  gap: 0; 
 }
 
 .square {
@@ -140,37 +140,38 @@ label {
   width: 20vh;
   font-size: 4vh;
   font-weight: bold;
-  border: solid black 2.1px;
+  border: solid black 2px;
 }
 
 #tile-0 {
-  border-top-style: none;
-  border-left-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: solid black 2px;
 }
 #tile-1 {
-  border-top-style: none;
+  border-top: none;
+  border-left: solid black 2px !important;
 }
 #tile-2 {
-  border-top-style: none;
-  border-right-style: none;
+  border-top: none;
+  border-right: none;
 }
 #tile-3 {
-  border-left-style: none;
+  border-left: none;
 }
-
 #tile-5 {
-  border-right-style: none;
+  border-right: none;
 }
 #tile-6 {
-  border-bottom-style: none;
-  border-left-style: none;
+  border-bottom: none;
+  border-left: none;
 }
 #tile-7 {
-  border-bottom-style: none;
+  border-bottom: none;
 }
 #tile-8 {
-  border-bottom-style: none;
-  border-right-style: none;
+  border-bottom: none;
+  border-right: none;
 }
 
 .square:hover {
@@ -226,6 +227,7 @@ footer {
   align-items: center;
   font-size: 2vh;
 }
+
 #github-logo {
   display: flex;
   justify-content: center;
@@ -234,6 +236,7 @@ footer {
   height: 2vw;
   padding-left: 10px;
 }
+
 #github-logo:hover {
   transform: scale(1.1);
   cursor: pointer;
@@ -248,6 +251,7 @@ footer {
     font-size: 2vh;
     font-weight: bold;
   }
+
   .player-prompt-modal,
   .ai-prompt-modal {
     height: 30vh;
